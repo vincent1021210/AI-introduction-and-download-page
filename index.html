@@ -219,127 +219,47 @@
         color: #334;
       }
 
-      .stage {
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 28px;
+      .hero-media {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        background: #0f1720;
         box-shadow: var(--shadow);
-        padding: 18px;
+        aspect-ratio: 16 / 9;
+        min-height: 240px;
       }
 
-      .stage-top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 14px;
-      }
-
-      .stage-brand {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-weight: 700;
-      }
-
-      .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #1e8e3e;
-        box-shadow: 0 0 0 6px rgba(30, 142, 62, 0.12);
-      }
-
-      .wake-pill {
-        font-size: 13px;
-        color: var(--accent-deep);
-        background: var(--accent-wash);
-        border-radius: 999px;
-        padding: 6px 10px;
-      }
-
-      .thread {
-        display: grid;
-        gap: 10px;
-        min-height: 280px;
-      }
-
-      .bubble {
-        max-width: 88%;
-        padding: 12px 14px;
-        border-radius: 16px;
-        font-size: 15px;
-      }
-
-      .bubble.user {
-        margin-left: auto;
-        background: var(--accent);
-        color: #fff;
-        border-bottom-right-radius: 6px;
-      }
-
-      .bubble.bot {
-        background: var(--accent-wash);
-        color: var(--ink);
-        border-bottom-left-radius: 6px;
-      }
-
-      .bubble small {
+      .hero-media video {
         display: block;
-        opacity: 0.75;
-        font-size: 12px;
-        margin-bottom: 4px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background: #0f1720;
       }
 
-      .listen {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: 14px;
-        padding: 12px 14px;
-        border-radius: 16px;
-        background: #f7f9fc;
+      .hero-media-caption {
+        margin: 10px 0 0;
         color: var(--muted);
         font-size: 14px;
       }
 
-      .bars {
-        display: flex;
-        align-items: flex-end;
-        gap: 3px;
-        height: 16px;
-      }
-
-      .bars span {
-        width: 3px;
-        border-radius: 99px;
-        background: var(--accent);
-        animation: pulse 1.1s ease-in-out infinite;
-      }
-
-      .bars span:nth-child(1) {
-        height: 6px;
-      }
-      .bars span:nth-child(2) {
-        height: 14px;
-        animation-delay: 0.15s;
-      }
-      .bars span:nth-child(3) {
-        height: 9px;
-        animation-delay: 0.3s;
-      }
-      .bars span:nth-child(4) {
-        height: 16px;
-        animation-delay: 0.05s;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scaleY(0.45);
+      @keyframes rise-in {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
         }
-        50% {
-          transform: scaleY(1);
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
+
+      .hero > div:first-child {
+        animation: rise-in 0.7s ease-out both;
+      }
+
+      .hero-media {
+        animation: rise-in 0.85s ease-out 0.12s both;
       }
 
       section {
@@ -556,7 +476,8 @@
           scroll-behavior: auto;
         }
 
-        .bars span {
+        .hero > div:first-child,
+        .hero-media {
           animation: none;
         }
       }
@@ -605,36 +526,21 @@
           </ul>
         </div>
 
-        <aside class="stage" aria-label="對話示意">
-          <div class="stage-top">
-            <div class="stage-brand">
-              <span class="dot" aria-hidden="true"></span>
-              小一正在聽
-            </div>
-            <span class="wake-pill">喚醒詞：小一小一／你好</span>
+        <aside aria-label="介紹影片">
+          <div class="hero-media">
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              controlslist="nodownload"
+              title="小一 AI 語音助理介紹影片"
+            >
+              <source src="介紹影片.mp4" type="video/mp4" />
+              你的瀏覽器不支援影片播放，請
+              <a href="介紹影片.mp4">下載介紹影片</a>。
+            </video>
           </div>
-          <div class="thread">
-            <div class="bubble user">
-              <small>你</small>
-              小一小一，今天天氣如何？
-            </div>
-            <div class="bubble bot">
-              <small>小一</small>
-              已查到你所在位置的天氣，我唸給你聽。
-            </div>
-            <div class="bubble user">
-              <small>你</small>
-              導航到台北車站。
-            </div>
-            <div class="bubble bot">
-              <small>小一</small>
-              請問是幫你導航到台北車站嗎？說「對」就出發。
-            </div>
-          </div>
-          <div class="listen">
-            <span class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
-            待命中。先說喚醒詞，再講指令。
-          </div>
+          <p class="hero-media-caption">一分鐘認識小一：喚醒、指令與主要功能。</p>
         </aside>
       </div>
 
