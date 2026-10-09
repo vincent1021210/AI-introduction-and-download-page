@@ -225,17 +225,21 @@
         overflow: hidden;
         background: #0f1720;
         box-shadow: var(--shadow);
-        aspect-ratio: 9 / 16;
-        max-height: min(70vh, 560px);
-        width: min(100%, 320px);
+        width: 100%;
+        max-height: min(72vh, 620px);
         margin-inline: auto;
+      }
+
+      .hero-media.is-portrait {
+        width: min(100%, 320px);
       }
 
       .hero-media video {
         display: block;
         width: 100%;
-        height: 100%;
-        object-fit: contain;
+        max-height: min(72vh, 620px);
+        height: auto;
+        vertical-align: middle;
         background: #0f1720;
       }
 
@@ -536,7 +540,7 @@
               preload="auto"
               controlslist="nodownload"
               title="小一 AI 語音助理介紹影片"
-              src="intro.mp4#t=1"
+              src="intro.mp4?v=3#t=0.1"
             >
               你的瀏覽器不支援影片播放，請
               <a href="intro.mp4">下載介紹影片</a>。
@@ -545,6 +549,22 @@
           <p class="hero-media-caption">一分鐘認識小一：喚醒、指令與主要功能。</p>
         </aside>
       </div>
+      <script>
+        (function () {
+          var media = document.querySelector(".hero-media");
+          var video = media && media.querySelector("video");
+          if (!video) return;
+          function fit() {
+            if (!video.videoWidth || !video.videoHeight) return;
+            media.classList.toggle(
+              "is-portrait",
+              video.videoHeight > video.videoWidth
+            );
+          }
+          video.addEventListener("loadedmetadata", fit);
+          if (video.readyState >= 1) fit();
+        })();
+      </script>
 
       <section id="features">
         <div class="wrap">
