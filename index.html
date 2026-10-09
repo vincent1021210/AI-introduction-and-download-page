@@ -225,15 +225,17 @@
         overflow: hidden;
         background: #0f1720;
         box-shadow: var(--shadow);
-        aspect-ratio: 16 / 9;
-        min-height: 240px;
+        aspect-ratio: 9 / 16;
+        max-height: min(70vh, 560px);
+        width: min(100%, 320px);
+        margin-inline: auto;
       }
 
       .hero-media video {
         display: block;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         background: #0f1720;
       }
 
@@ -531,11 +533,11 @@
             <video
               controls
               playsinline
-              preload="metadata"
+              preload="auto"
               controlslist="nodownload"
               title="小一 AI 語音助理介紹影片"
+              src="intro.mp4?v=2"
             >
-              <source src="intro.mp4" type="video/mp4" />
               你的瀏覽器不支援影片播放，請
               <a href="intro.mp4">下載介紹影片</a>。
             </video>
