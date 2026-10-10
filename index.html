@@ -411,7 +411,27 @@
 
       .download .btn {
         align-self: flex-start;
+      }
+
+      .download .btn-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
         margin-top: auto;
+      }
+
+      .download .meta-line {
+        margin: 0;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .download code {
+        font-family: ui-monospace, Consolas, monospace;
+        background: #eef2f7;
+        padding: 1px 5px;
+        border-radius: 4px;
+        font-size: 0.9em;
       }
 
       .note {
@@ -643,18 +663,37 @@
       <section id="download">
         <div class="wrap">
           <h2>下載與安裝</h2>
-          <p class="section-lead">手機請下載 Android App。也可以直接開網頁版，或在 Windows 本機執行。</p>
+          <p class="section-lead">
+            手機請下載原生 Android App（非 Chrome／TWA）。介面打進 APK，後台可常駐聆聽「小一小一」。也可以先用網頁版試試。
+          </p>
           <div class="downloads">
             <article class="download featured">
-              <p class="kicker">建議 · Android</p>
-              <h3>下載 App（APK）</h3>
-              <p>免商店安裝。安裝後會有獨立圖示，並以全螢幕開啟。約 1.4 MB。</p>
+              <p class="kicker">建議 · Android 原生版 v2.2.0</p>
+              <h3>立即下載 Android APK</h3>
+              <p>
+                免商店安裝。登入與對話畫面打包在 App 內，開啟不必載入 GitHub。約 3.1 MB，套件
+                <code>com.vincent1021210.primary1ai</code>。
+              </p>
+              <p class="meta-line">App 內建：Gmail 註冊／登入／忘記密碼、後台喚醒、伺服器 Gemini 回覆（無前端金鑰）。</p>
               <ol>
-                <li>建議用手機 Chrome 開啟下載頁。</li>
-                <li>點「立即下載 Android APK」。</li>
-                <li>若提示未知來源，到設定允許後再完成安裝。</li>
+                <li>建議用手機 Chrome 開啟下載頁，或直接下載下方 APK。</li>
+                <li>若出現「封鎖來自未知來源的應用程式」，點設定並允許此來源。</li>
+                <li>首次用語音時請允許麥克風；到 App 設定貼上 Gemini API Key，並確認已連上網路。</li>
+                <li>到系統設定 → 應用程式 → 小一助理 → 電池，改為「不受限制」，避免被殺後台。</li>
               </ol>
-              <a class="btn btn-primary" href="https://vincent1021210.github.io/Primary-1-AI/download.html" target="_blank" rel="noopener">前往下載頁</a>
+              <div class="btn-row">
+                <a
+                  class="btn btn-primary"
+                  href="https://vincent1021210.github.io/Primary-1-AI/downloads/xiao-yi-assistant.apk"
+                  download
+                >立即下載 APK</a>
+                <a
+                  class="btn btn-ghost"
+                  href="https://vincent1021210.github.io/Primary-1-AI/download.html"
+                  target="_blank"
+                  rel="noopener"
+                >下載說明與 QR</a>
+              </div>
             </article>
 
             <article class="download">
@@ -666,7 +705,9 @@
                 <li>用 Gmail 註冊或登入。</li>
                 <li>允許麥克風，說「小一小一」。</li>
               </ol>
-              <a class="btn btn-primary" href="https://vincent1021210.github.io/Primary-1-AI/" target="_blank" rel="noopener">立即開啟</a>
+              <div class="btn-row">
+                <a class="btn btn-primary" href="https://vincent1021210.github.io/Primary-1-AI/" target="_blank" rel="noopener">立即開啟</a>
+              </div>
             </article>
 
             <article class="download">
@@ -678,7 +719,9 @@
                 <li>進入解壓後的資料夾。</li>
                 <li>雙擊「啟動語音助手.bat」，並允許麥克風。</li>
               </ol>
-              <a class="btn btn-ghost" href="https://github.com/vincent1021210/Primary-1-AI/archive/refs/heads/main.zip">下載 ZIP</a>
+              <div class="btn-row">
+                <a class="btn btn-ghost" href="https://github.com/vincent1021210/Primary-1-AI/archive/refs/heads/main.zip">下載 ZIP</a>
+              </div>
             </article>
 
             <article class="download">
@@ -690,11 +733,13 @@
                 <li>到擴充功能頁面，開啟「開發人員模式」。</li>
                 <li>選擇「載入未封裝項目」，指定 extension 資料夾。</li>
               </ol>
-              <a class="btn btn-ghost" href="https://github.com/vincent1021210/Primary-1-AI/tree/main/extension" target="_blank" rel="noopener">查看擴充功能原始碼</a>
+              <div class="btn-row">
+                <a class="btn btn-ghost" href="https://github.com/vincent1021210/Primary-1-AI/tree/main/extension" target="_blank" rel="noopener">查看擴充功能原始碼</a>
+              </div>
             </article>
           </div>
           <p class="note">
-            聽寫與朗讀不需付費。若要使用 Gemini 糾錯，請在網頁版的瀏覽器主控台設定本機金鑰，金鑰不會上傳到專案倉庫。純朗讀視窗可另雙擊「啟動朗讀.bat」（同樣需要 Python）。
+            Android 原生版建議配戴耳機、環境安靜時錄音；說完後再點一次麥克風送出。網頁版若要用 Gemini，請在本機設定金鑰。純朗讀視窗可另雙擊「啟動朗讀.bat」（需要 Python）。
           </p>
         </div>
       </section>
